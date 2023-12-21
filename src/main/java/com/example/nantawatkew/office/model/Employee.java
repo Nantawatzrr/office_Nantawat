@@ -19,7 +19,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private double salary;
+    private int salary;
   
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,7 +30,7 @@ public class Employee {
     @JoinColumn(name="project_id")
     private Project project;
 
-    public Employee(String name, double salary, Department department, Project project) {
+    public Employee(String name, int salary, Department department, Project project) {
         this.name = name;
         this.salary = salary;
         this.department = department;

@@ -48,10 +48,30 @@ public class OfficeApplication implements CommandLineRunner {
 		employeeRepository.save(new Employee("นันทวัฒน์", 15000, dpm1,pj1));
 		employeeRepository.save(new Employee("สุรชาติ", 25000, dpm2,pj2));
 
+		logger.info("-------- find NameAll -------------");
 		for (Employee employee : employeeRepository.findAll()){
 			logger.info("name : {}, salary : {}",
+			employee.getName(),employee.getSalary() );
+		}
+		logger.info("-------- find Name -------------");
+		for (Employee employee : employeeRepository.findByName("สุรชาติ")){
+			logger.info("name : {} , salary : {}",
 			employee.getName(),employee.getSalary());
 		}
+
+		logger.info("-------- find GreaterThan -------------");
+		for (Employee employee : employeeRepository.findBySalaryGreaterThan(150)){
+			logger.info("Name : {} , Salary : {}",
+			employee.getName(),employee.getSalary());
+		}
+
+		logger.info("-------- find NameContaining -------------");
+		for (Project project : projectRepository.findByNameContaining("")){
+			logger.info("Project : {}", project.getName());
+		}
+
+		
+
 	}
 
 
